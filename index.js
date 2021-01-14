@@ -8,14 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // middleqare
 app.use(bodyParser.json());
 
-//Helooo there!!!!
 // book inventory 
 const allBooks = [];
 
 
 app.get('/', (req, res)=>{
     // welcome to book store
-    res.json({ message : 'Welcome to book  store'});
+    res.json({ message : 'Welcome to book  store'});  //.json return objects
 });
 
 // // get all books
@@ -47,14 +46,8 @@ app.post('/book', (req, res)=>{
 app.delete('/book/delete/:bookId', (req, res)=>{
 
     const bookID = req.params.bookId;
-
-    //console.log(bookID);
-
-    //res.json(bookID);
-    const len = allBooks.length;
 for(var i=0;i<len;i++)
 {
-
     if(allBooks[i].id==bookID)
     {
         for(var j=i;j<len-1;j++)
