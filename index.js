@@ -5,12 +5,11 @@ const app = express()
 const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: true }));
-// middleqare
+// middleware
 app.use(bodyParser.json());
 
 // book inventory 
 const allBooks = [];
-
 
 app.get('/', (req, res)=>{
     // welcome to book store
@@ -46,20 +45,9 @@ app.post('/book', (req, res)=>{
 app.delete('/book/delete/:bookId', (req, res)=>{
 
     const bookID = req.params.bookId;
-for(var i=0;i<len;i++)
-{
-    if(allBooks[i].id==bookID)
-    {
-        for(var j=i;j<len-1;j++)
-        {
-            allBooks[j]=allBooks[j+1];
-        }
-        allBooks.pop();
-        break;
-    }
+var newBooks=allBooks.filter(function(i) {return i.id!=bookID})
 
-}
-res.json(allBooks);
+res.json(newBooks);
 });
 
 
